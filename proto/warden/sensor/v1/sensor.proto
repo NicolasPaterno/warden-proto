@@ -21,4 +21,5 @@ message SensorReading {
   double                    value     = 4;
   string                    unit      = 5;
   google.protobuf.Timestamp timestamp = 6;
+  string                    tenant_id = 7;
 }

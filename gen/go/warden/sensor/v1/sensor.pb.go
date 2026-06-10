@@ -85,6 +85,7 @@ type SensorReading struct {
 	Value         float64                `protobuf:"fixed64,4,opt,name=value,proto3" json:"value,omitempty"`
 	Unit          string                 `protobuf:"bytes,5,opt,name=unit,proto3" json:"unit,omitempty"`
 	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	TenantId      string                 `protobuf:"bytes,7,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -161,18 +162,26 @@ func (x *SensorReading) GetTimestamp() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *SensorReading) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
 var File_warden_sensor_v1_sensor_proto protoreflect.FileDescriptor
 
 const file_warden_sensor_v1_sensor_proto_rawDesc = "" +
 	"\n" +
-	"\x1dwarden/sensor/v1/sensor.proto\x12\x10warden.sensor.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd6\x01\n" +
+	"\x1dwarden/sensor/v1/sensor.proto\x12\x10warden.sensor.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf3\x01\n" +
 	"\rSensorReading\x12\x1b\n" +
 	"\tsensor_id\x18\x01 \x01(\tR\bsensorId\x12\x12\n" +
 	"\x04room\x18\x02 \x01(\tR\x04room\x120\n" +
 	"\x04type\x18\x03 \x01(\x0e2\x1c.warden.sensor.v1.SensorTypeR\x04type\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\x01R\x05value\x12\x12\n" +
 	"\x04unit\x18\x05 \x01(\tR\x04unit\x128\n" +
-	"\ttimestamp\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp*\x8d\x01\n" +
+	"\ttimestamp\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1b\n" +
+	"\ttenant_id\x18\a \x01(\tR\btenantId*\x8d\x01\n" +
 	"\n" +
 	"SensorType\x12\x1b\n" +
 	"\x17SENSOR_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
